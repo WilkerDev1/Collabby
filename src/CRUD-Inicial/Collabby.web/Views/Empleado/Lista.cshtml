@@ -30,10 +30,18 @@
                         <td>@(item.Activo ? "SI": "NO")</td>
                         <td>
                             <a asp-controller="Empleado" 
-                            asp-action="Editar" 
-                            asp-route-id="@item.IdEmpleado"
-                            class="btn btn-primary">
-                            Editar</a>
+                                asp-action="Editar" 
+                                asp-route-id="@item.IdEmpleado"
+                                class="btn btn-primary">
+                                Editar</a>
+
+                            <a asp-controller="Empleado"
+                               asp-action="Eliminar"
+                               asp-route-id="@item.IdEmpleado"
+                               onclick="return confirmar()"
+                               class="btn btn-danger">
+                                Eliminar
+                            </a>
 
                         </td>
                     </tr>
@@ -44,3 +52,11 @@
     </div>
 
 </div>
+
+@section Scripts{
+    <script>
+        function confirmar() {
+            return confirm("estas seguro de eliminar a este Empleado?")
+        }
+    </script>
+}

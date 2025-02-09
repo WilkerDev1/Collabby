@@ -48,5 +48,15 @@ namespace Collabby.web.Controllers
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Lista));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            Empleado empleado = await _appDbContext.Empleados.FirstAsync(e => e.IdEmpleado == id);
+
+            _appDbContext.Empleados.Remove(empleado);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Lista));
+        }
     }
 }
