@@ -25,5 +25,13 @@ namespace Collabby.web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Nuevo(Empleado empleado)
+        {
+            await _appDbContext.Empleados.AddAsync(empleado);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Lista));
+        }
     }
 }
