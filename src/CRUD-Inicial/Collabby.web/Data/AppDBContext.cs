@@ -24,7 +24,7 @@ namespace Collabby.web.Data
                 .ValueGeneratedOnAdd();
 
                 tb.Property(colu => colu.NombreCompleto).HasMaxLength(50);
-                //tb.Property(colu => colu.Correo).HasMaxLength(50);
+                tb.Property(colu => colu.Correo).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Empleado>().ToTable("Empleado");
