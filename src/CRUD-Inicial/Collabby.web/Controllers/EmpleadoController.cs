@@ -33,5 +33,20 @@ namespace Collabby.web.Controllers
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Lista));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Editar(int id)
+        {
+            Empleado empleado = await _appDbContext.Empleados.FirstAsync(e => e.IdEmpleado == id);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(Empleado empleado)
+        {
+            _appDbContext.Empleados.Update(empleado);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Lista));
+        }
     }
 }
